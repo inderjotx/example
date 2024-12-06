@@ -166,18 +166,14 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { open } = useSidebar();
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <div className="flex justify-between items-center gap-2">
-              <SidebarMenuButton tooltip="Home">
-                <Framer /> Logo
-              </SidebarMenuButton>
-              <SidebarTrigger className={cn(!open && "hidden")} />
-            </div>
+          <SidebarMenuItem className="pl-0.5">
+            <SidebarMenuButton>
+              <Framer size={24} /> Dashboard
+            </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
@@ -195,7 +191,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
 export function EmptySidebar() {
   return (
-    <div className="h-screen w-[15rem] border p-2 flex flex-col gap-2">
+    <div className="h-[calc(100vh-4rem)] w-[16rem] border p-2 flex flex-col gap-2">
       <Combobox />
       <SearchInput />
       <SearchAccordion />
@@ -234,7 +230,7 @@ export function SearchAccordion() {
     "BSE Broadcasts",
   ];
   return (
-    <ScrollArea className="h-screen px-3">
+    <ScrollArea className="h-screen px-3 border-l-0">
       <Accordion type="multiple" className="w-full">
         {items.map((item) => (
           <AccordionItem
